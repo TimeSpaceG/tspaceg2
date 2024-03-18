@@ -1,11 +1,11 @@
-from cmath import log
-from distutils.sysconfig import PREFIX
+import cmath
+import distutils.sysconfig
 import discord
 from dotenv import load_dotenv
 import os
 load_dotenv()
 
-PREFIX = os.environ['PREFIX']
+PREFIX: str = os.environ['PREFIX']
 TOKEN = os.environ['TOKEN']
 
 client = discord.Client()
@@ -19,10 +19,10 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    if message.content == f'{PREFIX}call':
+    if message.content == f'{distutils.sysconfig.PREFIX}call':
         await message.channel.send("callback!")
 
-    if message.content.startswith(f'{PREFIX}hello'):
+    if message.content.startswith(f'{distutils.sysconfig.PREFIX}hello'):
         await message.channel.send('Hello!')
 
 
